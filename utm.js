@@ -1,24 +1,22 @@
-(function() {
-  function getQueryVariable(variable) {
-    var query = window.location.search.substring(1);
-    var vars = query.split('&');
-    for (var i = 0; i < vars.length; i++) {
-      var pair = vars[i].split('=');
-      if (pair[0] === variable) {
-        return decodeURIComponent(pair[1].replace(/\+/g, ' '));
-      }
-    }
-    return '';
-  }
+// scripts.js
 
-  var utm_source = getQueryVariable('utm_source');
+// Function to safely get a URL parameter
+function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+}
 
-  if (utm_source) {
-    var utmSourceField = document.querySelector('input[name="utm_source"]');
-    if (utmSourceField) {
-      utmSourceField.value = utm_source;
+// Function to safely set the value of a hidden input field
+function setHiddenFieldValue() {
+    const utmSource = getQueryParam('utm_source');
+    const hiddenField = document.querySelector('input[name="sursa trafic"]');
+    
+    if (hiddenField && utmSource) {
+        hiddenField.value = decodeURIComponent(utmSource); // Ensure value is properly decoded
     } else {
-      console.warn('UTM source field not found');
+        console.error('Hidden field not found or URL parameter is missing');
     }
-  }
-})();
+}
+
+// Execute the function to set the hidden field value when the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', setHiddenFieldValue);
