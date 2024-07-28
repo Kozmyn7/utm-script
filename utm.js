@@ -1,5 +1,7 @@
 // scripts.js
 
+console.log('Script loaded')
+
 // Function to safely get a URL parameter
 function getQueryParam(param) {
     const urlParams = new URLSearchParams(window.location.search);
