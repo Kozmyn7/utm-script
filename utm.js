@@ -14,6 +14,8 @@ function setHiddenFieldValue() {
     console.log('Setting hidden field value');
     const utmSource = getQueryParam('utm_source');
     console.log(`UTM Source: ${utmSource}`);
+    
+    // Use a more specific selector if needed
     const hiddenField = document.querySelector('input[name="sursa trafic"]');
     
     if (hiddenField && utmSource) {
