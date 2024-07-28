@@ -1,7 +1,5 @@
 // scripts.js
 
-console.log('Script Loaded');
-
 // Function to safely get a URL parameter
 function getQueryParam(param) {
     console.log(`Getting query parameter: ${param}`);
@@ -26,5 +24,8 @@ function setHiddenFieldValue() {
     }
 }
 
-// Execute the function to set the hidden field value when the DOM is fully loaded
-document.addEventListener('DOMContentLoaded', setHiddenFieldValue);
+// Ensure that the DOMContentLoaded event is properly set up
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM fully loaded and parsed');
+    setHiddenFieldValue();
+});
